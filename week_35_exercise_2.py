@@ -7,21 +7,26 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 
+# for plots:
+plt.rcParams['figure.dpi'] = 300
+plt.rcParams['savefig.dpi'] = 300
+
+
 noise_coeff = 0.1 #0.5, 1 
 
 x = np.random.rand(100, 1)
 y = 2.0+5*x*x+noise_coeff*np.random.randn(100,1)
 
-#Write your own code (following the examples under the regression notes) 
-#for computing the parametrization of the data set 
-#fitting a second-order polynomial.
+# Write your own code (following the examples under the regression notes) 
+# for computing the parametrization of the data set 
+# fitting a second-order polynomial.
 
-#create design matrix:
+# create design matrix:
 X = np.ones((len(x),3))
 X[:,1] = x.flatten() #flatten() or x[:,0], otherwise dimensions are wrong
 X[:,2] = x.flatten()**2
 
-#Also made a function for generating a design matrix
+# Also made a function for generating a design matrix
 def get_design_matrix(x, pol_deg):
     """Creates a design matrix for fitting polynomials of degree pol_deg"""
     X = np.ones((len(x), pol_deg+1))
@@ -34,12 +39,12 @@ X = get_design_matrix(x, p)
 
 
 XTX = np.linalg.inv(np.matmul(X.T,X)) #np.matmul or @ for matrix multiplication 
-#find beta:
+# find beta:
 beta = np.matmul(np.matmul(XTX,X.T), y) #beta vector
-#predict y:
+# predict y:
 y_pred = np.matmul(X,beta)
 
-#sort for plotting line plots, otherwise they zigzag all over the place
+# sort for plotting line plots, otherwise they zigzag all over the place
 i_sort = np.argsort(x.flatten()) #find indices that sort the x values
 x_sort = x[i_sort] #sort x values
 y_sort = y[i_sort] #sort y values so they match their x values
@@ -65,7 +70,7 @@ R_sq = get_R2(y, y_pred)
 print(f'MSE = {MSE}')
 print(f'R^2 = {R_sq}')
 
-#then sklearn
+# then sklearn
 linreg = LinearRegression()
 linreg.fit(X,y)
 linreg_R_sq = linreg.score(X, y)

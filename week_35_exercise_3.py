@@ -7,6 +7,10 @@ from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 
+# for plots:
+plt.rcParams['figure.dpi'] = 300
+plt.rcParams['savefig.dpi'] = 300
+
 # Functions
 def get_design_matrix(x, pol_deg):
     """Creates a design matrix for fitting polynomials of degree pol_deg"""
