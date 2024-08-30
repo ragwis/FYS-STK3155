@@ -7,8 +7,10 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 
+noise_coeff = 0.1 #0.5, 1 
+
 x = np.random.rand(100, 1)
-y = 2.0+5*x*x+0.1*np.random.randn(100,1)
+y = 2.0+5*x*x+noise_coeff*np.random.randn(100,1)
 
 #Write your own code (following the examples under the regression notes) 
 #for computing the parametrization of the data set 
@@ -73,7 +75,6 @@ print(f'R^2 = {linreg_R_sq}')
 
 # Generate new x values to plot the sk-learn model
 x_new = np.linspace(0, 1, len(x))
-
 X_new = get_design_matrix(x_new, p)
 
 y_pred_skl = linreg.predict(X_new)
@@ -82,7 +83,7 @@ plt.xlabel(r'$x$')
 plt.ylabel(r'$y$')
 plt.title(r'Second order polynomial fit')
 plt.legend()
-plt.savefig('exercise_2.png')
+plt.savefig(f'exercise_2_{noise_coeff}.png')
 
 
 
