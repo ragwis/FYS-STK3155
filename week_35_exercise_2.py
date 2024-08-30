@@ -1,13 +1,7 @@
-# -*- coding: utf-8 -*-
 """
-Created on Wed Aug 21 13:27:35 2024
-
-@author: rawis
+Week 35, Exercise 2
 """
 
-
-#Exercise 2:
-#----------------------------------------
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
