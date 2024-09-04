@@ -11,7 +11,6 @@ from sklearn.metrics import mean_squared_error
 plt.rcParams['figure.dpi'] = 300
 plt.rcParams['savefig.dpi'] = 300
 
-
 noise_coeff = 0.1 #0.5, 1 
 
 x = np.random.rand(100, 1)
